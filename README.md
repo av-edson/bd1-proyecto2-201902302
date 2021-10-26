@@ -34,7 +34,7 @@ Como primer paso de normalizacion se realiza una inspeccion sobre la tabla, cuyo
 
 Sin embargo si que se pudo aplicar la segunda indicacion debido a que se encontraron muchos datos repetidos que pudieron ser fracmentados en nuevas tablas, tal es el caso de la siguiente imagen.
 
-![Ejmplo Primera Forma Normal](imagenes\norm1.png)
+![Ejmplo Primera Forma Normal](/imagenes/norm1.png)
 
 A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas tablas de la temporal como:
 
@@ -51,6 +51,6 @@ A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas 
 
 Se separaraon algunas columnas como nuevas tablas con el fin de eliminar las precedencias transitivas para que los datos dentro de una entidad correspondan a informacion muy puntual y atomizada.
 
-![Ejmplo Tercera Forma Normal](imagenes\norm3.png)
+![Ejmplo Tercera Forma Normal](/imagenes\norm3.png)
 
-![Ejmplo Tercera Forma Normal](imagenes\norm3_2.png)
+![Ejmplo Tercera Forma Normal](/imagenes\norm3_2.png)
