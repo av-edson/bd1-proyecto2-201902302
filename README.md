@@ -51,6 +51,6 @@ A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas 
 
 Se separaraon algunas columnas como nuevas tablas con el fin de eliminar las precedencias transitivas para que los datos dentro de una entidad correspondan a informacion muy puntual y atomizada.
 
-![Ejmplo Tercera Forma Normal](/imagenes\norm3.png)
+![Ejmplo Tercera Forma Normal](/imagenes/norm3.png)
 
-![Ejmplo Tercera Forma Normal](/imagenes\norm3_2.png)
+![Ejmplo Tercera Forma Normal](/imagenes/norm3_2.png)
