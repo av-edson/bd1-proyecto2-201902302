@@ -26,10 +26,31 @@ El siguiente proyecto surgió por la necesidad de mantener sistemas  escalables 
 
 >El valor de una columna debe ser una entidad atomica, indivisible, exluyendo asi las dificultades que podria llevar el tratamiento de un dato formado de varias partes.
 
+1. Todos los atributos, valores almacenados en las columnas, deben ser indivisibles.
+
+2. No deben existir grupos de valores repetidos.
+
+Como primer paso de normalizacion se realiza una inspeccion sobre la tabla, cuyo nombre dentro del proyecto *temporal* en busqueda de atributos dentro de columnas que no sean atomicos, es decir que se puedan dividir y como resultado no se encontrarol columnas que se pudieran dividir debido a la naturaleza de la tabla.
+
+Sin embargo si que se pudo aplicar la segunda indicacion debido a que se encontraron muchos datos repetidos que pudieron ser fracmentados en nuevas tablas, tal es el caso de la siguiente imagen.
+
+![Ejmplo Primera Forma Normal](imagenes\norm1.png)
+
+A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas tablas de la temporal como:
+
+- El partido con su nombre y municipio en que participó
+- El tipo de elecciones que se llevaron a cabo
+
 ## 7. Segunda Forma Normal
 
 >Cuando la tabla tiene una llave primaria conformada por dos o mas columnas se debe asegurar, que todas las demas columnas son accesables a travez de la clave completa y nunca mediante una parte de esa clave.
 
 ## 8. Tercera Forma Normal
 
->No deben existir precedencias transitivas entre las columnas de una tabla. Esto significa que las columnas que no forman parte de la clave primaria deben depender solo de la clave, nunca de otra columna o clave. 
+>No deben existir precedencias transitivas entre las columnas de una tabla. Esto significa que las columnas que no forman parte de la clave primaria deben depender solo de la clave, nunca de otra columna o clave.
+
+Se separaraon algunas columnas como nuevas tablas con el fin de eliminar las precedencias transitivas para que los datos dentro de una entidad correspondan a informacion muy puntual y atomizada.
+
+![Ejmplo Tercera Forma Normal](imagenes\norm3.png)
+
+![Ejmplo Tercera Forma Normal](imagenes\norm3_2.png)
