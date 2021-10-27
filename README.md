@@ -49,7 +49,7 @@ A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas 
 
 >No deben existir precedencias transitivas entre las columnas de una tabla. Esto significa que las columnas que no forman parte de la clave primaria deben depender solo de la clave, nunca de otra columna o clave.
 
-Se separaraon algunas columnas como nuevas tablas con el fin de eliminar las precedencias transitivas para que los datos dentro de una entidad correspondan a informacion muy puntual y atomizada.
+Se separaraon algunas columnas como nuevas tablas con el fin de eliminar las precedencias transitivas para que los datos dentro de una entidad correspondan a informacion muy puntual y atomizada. Como se muestra en la imagen, dentro de un pais almacenar la region o algun municipio no es informacion que dependa exclusivamente de la llave primaria.
 
 ![Ejmplo Tercera Forma Normal](/imagenes/norm3.png)
 
