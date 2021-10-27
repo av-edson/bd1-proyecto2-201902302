@@ -1,3 +1,4 @@
+use db1_proyecto2;
 -- TABLA PAIS
 insert into pais (nombre) select distinct pais from temporal;  
 -- TABLA REGION
@@ -19,13 +20,6 @@ select distinct sexo from temporal;
 -- RAZA
 insert into raza (descripcion)
 select distinct raza from temporal;
--- ESCOLARIDAD
-insert into escolaridad (descripcion) values('primaria');
-insert into escolaridad (descripcion) values('nivel medio');
-insert into escolaridad (descripcion) values('universitarios');
--- EDUCACION MINIMA
-insert into educacion_minima (descripcion) values ('alfabetos');
-insert into educacion_minima (descripcion)values ('analfabetos');
 -- PARTIDO POLITICO
 insert into partido (partido,nombre)
 select distinct partido,nombre_partido from temporal;
@@ -45,3 +39,19 @@ inner join eleccion e
 on p.partido=t.partido and e.id_municipio=(select id_municipio from municipio where nombre=trim(t.municipio)
 and id_depto=(select id_depto from departamento where nombre=trim(t.depto)))
 ) da;
+-- ===============================================================
+-- eduacion 
+insert into educacion (analfabetos,alfabetos,primaria,nivel_medio,universidad)
+select datos.analfabetos,datos.alfabetos,datos.primaria,datos.nivel_medio,datos.universitarios from (
+select distinct trim(depto),TRIM(municipio),partido,sexo,raza,alfabetos,analfabetos,
+primaria,nivel_medio,universitarios 
+from temporal) as datos;
+-- ========================================================
+-- voto
+insert into voto (id_raza,id_sexo,id_educacion)
+select (select id_raza from raza where descripcion=da.raza) id_raza,
+(select id_sexo from sexo where sexo=da.sexo) id_sexo, e.id_educacion
+from (select distinct trim(depto),TRIM(municipio),partido,sexo,raza,alfabetos,
+analfabetos,primaria,nivel_medio,universitarios from temporal) da inner join 
+educacion e on e.alfabetos=da.alfabetos and e.analfabetos=da.analfabetos and 
+e.primaria=da.primaria and e.nivel_medio=da.nivel_medio and e.universidad=da.universitarios;
