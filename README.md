@@ -14,6 +14,8 @@ El siguiente proyecto surgió por la necesidad de mantener sistemas  escalables 
 
 ## 1. Modelo Lógico
 
+![foto](/imagenes/dd.jpg)
+
 ## 2. Modelo Relacional
 
 ![Modelo Relacional](/imagenes/relacional.png)
