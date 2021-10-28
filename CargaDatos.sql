@@ -48,10 +48,14 @@ primaria,nivel_medio,universitarios
 from temporal) as datos;
 -- ========================================================
 -- voto
-insert into voto (id_raza,id_sexo,id_educacion)
+insert into voto (id_raza,id_sexo,id_educacion,id_partido_eleccion)
 select (select id_raza from raza where descripcion=da.raza) id_raza,
-(select id_sexo from sexo where sexo=da.sexo) id_sexo, e.id_educacion
-from (select distinct trim(depto),TRIM(municipio),partido,sexo,raza,alfabetos,
-analfabetos,primaria,nivel_medio,universitarios from temporal) da inner join 
-educacion e on e.alfabetos=da.alfabetos and e.analfabetos=da.analfabetos and 
-e.primaria=da.primaria and e.nivel_medio=da.nivel_medio and e.universidad=da.universitarios;
+(select id_sexo from sexo where sexo=da.sexo) id_sexo, e.id_educacion, pa.id_partido_eleccion
+from (select distinct trim(depto)depto,TRIM(municipio)municipio,partido,sexo,raza,alfabetos,
+analfabetos,primaria,nivel_medio,universitarios from temporal) da 
+inner join  educacion e inner join partido_eleccion pa inner join eleccion el on e.alfabetos=da.alfabetos and 
+e.analfabetos=da.analfabetos and e.primaria=da.primaria and e.nivel_medio=da.nivel_medio 
+and e.universidad=da.universitarios 
+and pa.id_partido=(select id_partido from partido where partido=da.partido)
+and pa.id_eleccion=el.id_eleccion and el.id_municipio=(select id_municipio from municipio where nombre=da.municipio
+and id_depto=(select id_depto from departamento where nombre=da.depto));

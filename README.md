@@ -16,11 +16,60 @@ El siguiente proyecto surgió por la necesidad de mantener sistemas  escalables 
 
 ## 2. Modelo Relacional
 
+![Modelo Relacional](/imagenes/relacional.png)
+
 ## 3. Restricciones a Utilizar
 
+- Caracteristicas de los votantes que no son su sexo y su raza se tomaron como atributos dentro de la entidad educacion puesto que los valores dentro dependen del tipo de sexo y raza y no dependen entre ellos.
+- Para el sexo y la raza se separaron en entidades puesto que son caracteristicas mas influyentes y que independientemente del nivel de educacion cada votante posee un sexo y una raza.
+- La entidad eleccion hace referencia a un tipo de eleccion especifica, que en este caso son las elecciones municipales y debido a que no se encontro ningun otro tipo de elecciones se opto por manejar esta unica tabla.
+
 ## 4. Tabla de Atributos
+### Listado de Entidades
+
+1. pais
+2. region
+3. departamento
+4. municipio
+5. eleccion
+6. partido
+7. partido_eleccion
+8. voto
+9. educacion
+10. sexo
+11. raza
+    
+### Listado de Atributos
+
+-  pais
+![foto](/imagenes/pais.png)
+-  region
+![foto](/imagenes/region.png)
+-  departamento
+![foto](/imagenes/depto.png)
+-  municipio
+![foto](/imagenes/municipio.png)
+-  eleccion
+![foto](/imagenes/eleccion.png)
+-  partido
+![foto](/imagenes/partido.png)
+-  partido_eleccion
+![foto](/imagenes/partido_eleccion.png)
+-  voto
+![foto](/imagenes/voto.png)
+-  educacion
+![foto](/imagenes/educacion.png)
+-  sexo
+![foto](/imagenes/sexo.png)
+-  raza
+![foto](/imagenes/raza.png)
 
 ## 5. Consideraciones del Diseño
+
+1. La relacion existente entre educacion y voto se dividio debido a que existen datos mas influyentes y que todo votante posee como es la raza y el sexo.
+2. Debido a que dentro de los datos solo se maneja un tipo de eleccion se opto porque esta tabla estuviera relacionada unicamente con el municipio al que pertenecio la eleccion.
+3. La entidad partido_eleccion sirguio por la necesidad de atomizar los datos de un partido independientemente de las elecciones en que este haya participado.
+4. Se decidio dividir el departamento y la region como entidades diferentes para que en caso de existir la necesidad de hacer referencia a una region no haya necesidad de acceder a todos los departamentos.
 
 ## 6. Primera Forma Normal
 
@@ -44,6 +93,10 @@ A parte de las tablas creadas en el ejemplo tambien se pudieron separar algunas 
 ## 7. Segunda Forma Normal
 
 >Cuando la tabla tiene una llave primaria conformada por dos o mas columnas se debe asegurar, que todas las demas columnas son accesables a travez de la clave completa y nunca mediante una parte de esa clave.
+
+Un ejemplo de la aplicacion de esta norma la encontramos en la creacion de 2 tablas implicitas las cuales son eleccion y eleccion_municipio, las cuales permiten dividir la informacion de un municipio sin que esta dependa de las elecciones y viceversa. Tambien nos permite tener un mejor control de la informacion del partido sin que esta dependa de demas informacion.
+
+![Ejmplo Tercera Forma Normal](/imagenes/norm2.png)
 
 ## 8. Tercera Forma Normal
 
