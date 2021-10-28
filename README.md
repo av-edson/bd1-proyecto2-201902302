@@ -42,26 +42,37 @@ El siguiente proyecto surgió por la necesidad de mantener sistemas  escalables 
 ### Listado de Atributos
 
 -  pais
+
 ![foto](/imagenes/pais.png)
 -  region
+
 ![foto](/imagenes/region.png)
 -  departamento
+
 ![foto](/imagenes/depto.png)
 -  municipio
+
 ![foto](/imagenes/municipio.png)
 -  eleccion
+
 ![foto](/imagenes/eleccion.png)
 -  partido
+
 ![foto](/imagenes/partido.png)
 -  partido_eleccion
+
 ![foto](/imagenes/partido_eleccion.png)
 -  voto
+
 ![foto](/imagenes/voto.png)
 -  educacion
+
 ![foto](/imagenes/educacion.png)
 -  sexo
+
 ![foto](/imagenes/sexo.png)
 -  raza
+  
 ![foto](/imagenes/raza.png)
 
 ## 5. Consideraciones del Diseño
