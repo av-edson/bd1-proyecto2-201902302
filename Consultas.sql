@@ -255,3 +255,25 @@ with analfabetos as (
 )select analfabetos.nombre,(analfabetos.votos/totales.votos*100)porcentaje
 from analfabetos,totales order by porcentaje desc limit 1;
 -- ================================== CONSULTA 13 ===========================================
+with guate as (
+    select pa.nombre,dep.nombre depto,pa.id_pais,dep.id_depto,
+    sum(edu.alfabetos+edu.analfabetos+edu.primaria+edu.nivel_medio+edu.universidad)votos
+    from pais pa inner join region re inner join departamento dep inner join 
+    municipio mun inner join eleccion ele inner join partido_eleccion pae 
+    inner join partido par inner join voto vot inner join educacion edu
+    on pa.id_pais=re.id_pais and re.id_region=dep.id_region and dep.id_depto=mun.id_depto
+    and ele.id_municipio=mun.id_municipio and pae.id_eleccion=ele.id_eleccion 
+    and par.id_partido=pae.id_partido and vot.id_partido_eleccion=pae.id_partido_eleccion
+    and edu.id_educacion=vot.id_educacion and dep.nombre='Guatemala'
+), deptos as (
+    select pa.nombre,dep.nombre depto,pa.id_pais,
+    sum(edu.alfabetos+edu.analfabetos+edu.primaria+edu.nivel_medio+edu.universidad)votos
+    from pais pa inner join region re inner join departamento dep inner join 
+    municipio mun inner join eleccion ele inner join partido_eleccion pae 
+    inner join partido par inner join voto vot inner join educacion edu
+    on pa.id_pais=re.id_pais and re.id_region=dep.id_region and dep.id_depto=mun.id_depto
+    and ele.id_municipio=mun.id_municipio and pae.id_eleccion=ele.id_eleccion 
+    and par.id_partido=pae.id_partido and vot.id_partido_eleccion=pae.id_partido_eleccion
+    and edu.id_educacion=vot.id_educacion and pa.nombre='Guatemala' group by dep.nombre
+) select guate.nombre,deptos.depto,deptos.votos from guate inner join deptos on 
+guate.id_pais=deptos.id_pais where deptos.votos>(guate.votos);
